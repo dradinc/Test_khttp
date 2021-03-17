@@ -30,7 +30,7 @@
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="40dp"
-                android:text="Поиск"
+                android:text="Поиск (тест GET)"
                 app:layout_constraintTop_toBottomOf="@id/idMovie"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -42,10 +42,73 @@
                 android:textSize="15sp"
                 android:gravity="left"
                 />
-            <ImageView
-                android:id="@+id/MoviePoster"
+            <TextView
+                android:id="@+id/Test2_textView1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:gravity="left"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/black"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Авторизация (тест POST)"
+                android:onClick="buttonAuth_onClick"/>
+            <TextView
+                android:id="@+id/testPOST"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:gravity="left"/>
+            <TextView
+                android:id="@+id/testPost2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:gravity="left"/>
+            <Button
+                android:id="@+id/ButtonToken"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Запрос с токеном"
+                android:textSize="20sp"
+                android:visibility="invisible"
+                android:onClick="buttonToken_onClick"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/black"/>
+            <TextView
+                android:id="@+id/testToken"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:gravity="left"/>
+            <TextView
+                android:id="@+id/testToken2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:gravity="left"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/black"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Получение картинки"
+                android:visibility="invisible"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"/>
         </LinearLayout>
     </ScrollView>
 
