@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Test_khttp</string>
+    <integer name="token">0</integer>
 </resources>

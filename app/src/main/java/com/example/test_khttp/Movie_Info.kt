@@ -10,11 +10,7 @@ class Movie_Info (
     val image: List<String>,
     val poster: String,
     val tags: List<Map<String, String>>)
-{ //####################
-    @JvmName("getPoster1")
-    fun getPoster(): String {
-        return this.poster
-    }
+{
 
     override fun toString(): String {
         return "Movie:\n" +
