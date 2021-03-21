@@ -37,13 +37,6 @@ class MainActivity : AppCompatActivity() {
         var movieID : String = findViewById<EditText>(R.id.idMovie).text.toString()
         run(movieID)
     }
-<<<<<<< HEAD
-
-    var token : Int? = null
-    val client = OkHttpClient()
-    val gson = Gson()
-=======
->>>>>>> main
     @Override
     fun run(movieID : String) {
 
@@ -56,7 +49,6 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread {
                     findViewById<TextView>(R.id.Test2_textView).text = result
                 }
-<<<<<<< HEAD
             }
 
             override fun onResponse(call: Call, response: Response) {
@@ -100,133 +92,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-
-
-        /*
-        // Тест закрытого запроса с использованием токена
-        val request_token = Request.Builder()
-            .url("http://cinema.areas.su/user")
-            .addHeader("Authorization", "Bearer" + token)
-            .build()
-        client.newCall(request_token).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                var result : String = e.toString()
-                runOnUiThread {
-                    findViewById<TextView>(R.id.testToken).text = result
-                }
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                var result : String = response.toString()
-                runOnUiThread {
-                    findViewById<TextView>(R.id.testToken).text = result
-
-                    val responseBody = response.body?.string()
-                    val dataUsers : dataUsers = gson.fromJson(responseBody, dataUsers::class.java)
-                    runOnUiThread {
-                        findViewById<TextView>(R.id.testToken2).text = dataUsers.toString()
-                    }
-                }
-            }
-        })*/
-
-
-
-
-        /*client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                runOnUiThread {
-                    Toast.makeText(this@MainActivity, "Ошибка при запросе", Toast.LENGTH_LONG).show()
-                }
-=======
->>>>>>> main
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                var result : String = response.toString()
-                runOnUiThread {
-                    findViewById<TextView>(R.id.Test2_textView).text = result
-
-                    val responseBody = response.body?.string()
-                    val movieInfo : Movie_Info = gson.fromJson(responseBody, Movie_Info::class.java)
-<<<<<<< HEAD
-                    runOnUiThread {
-                        findViewById<TextView>(R.id.Test2_textView).text = movieInfo.toString()
-=======
-                    runOnUiThread{
-                        findViewById<TextView>(R.id.Test2_textView1).text = movieInfo.toString()
-                    }
-                }
-            }
-
-        })
     }
-
-
-    // Тестирование POST запроса
-    @Override
-    fun buttonAuth_onClick(view : View) {
-        // Тест POST запроса
-        val requestBody  = RequestBody.create("application/json; charset=utf-8".toMediaTypeOrNull(), "{\"email\":\"vasya@mail.com\", \"password\":\"qwerty\"}")
-        val requestPOST = Request.Builder().url("http://cinema.areas.su/auth/login").post(requestBody).build()
-        client.newCall(requestPOST).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                var result : String = e.toString()
-                runOnUiThread {
-                    findViewById<TextView>(R.id.testPOST).text = result
-                }
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                var result : String = response.toString()
-                runOnUiThread {
-                    findViewById<TextView>(R.id.testPOST).text = result
-
-                    val responseBody = response.body?.string()
-                    val loginUser : loginUser = gson.fromJson(responseBody, loginUser::class.java)
-                    runOnUiThread{
-                        token = loginUser.token
-                        findViewById<TextView>(R.id.testPost2).text = loginUser.toString()
-                        findViewById<Button>(R.id.ButtonToken).visibility = View.VISIBLE
->>>>>>> main
-                    }
-                }
-            }
-        })*/
-    }
-
-    fun buttonToken_onClick(view : View) {
-        // Тест закрытого запроса с использованием токена
-        val request_token = Request.Builder()
-            .url("http://cinema.areas.su/user")
-            .addHeader("Authorization", "Bearer " + token)
-            .build()
-        client.newCall(request_token).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                var result : String = e.toString()
-                runOnUiThread {
-                    findViewById<TextView>(R.id.testToken).text = result
-                }
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                var result : String = response.toString()
-                runOnUiThread {
-                    findViewById<TextView>(R.id.testToken).text = result
-                }
-
-                    val responseBody = response.body?.string()
-                    val dataUsers : List<dataUsers> = gson.fromJson(responseBody, dataUsers::class.java)
-                    runOnUiThread {
-                        findViewById<TextView>(R.id.testToken2).text = dataUsers.toString()
-                    }
-
-            }
-        })
-    }
-<<<<<<< HEAD
-=======
-
 
     // Тестирование использования токена
     @Override
@@ -266,7 +132,32 @@ class MainActivity : AppCompatActivity() {
     //  Получение картинки
     @Override
     fun image_onClick(view : View) {
+        // Добавление переменной с запросом
+        val request_image = Request.Builder() // Начинаем построение хапроса (Или что-то вроде этого)
+                .url("http://cinema.areas.su/up/images/" + "umbrella.jpeg") // Ссылка на запрос
+                .build() // Построить запрос (или что-то вроде этого)
 
+        // Делаем вызов простроенного запроса
+        client.newCall(request_image).enqueue(object : Callback {
+
+            // Если с вызовом запроса будет ошибка
+            override fun onFailure(call: Call, e: IOException) {
+                var result : String = e.toString()
+                runOnUiThread {
+                    findViewById<TextView>(R.id.testToken).text = result
+                }
+            }
+
+            // Если вызов выполнится
+            override fun onResponse(call: Call, response: Response) {
+                // Мелочь которая не нужна
+                var result = response.body?.string()
+                runOnUiThread {
+                    findViewById<TextView>(R.id.textImage).text = result
+                }
+            }
+        })
+
+        //findViewById<ImageView>(R.id.testIMG).setImage
     }
->>>>>>> main
 }

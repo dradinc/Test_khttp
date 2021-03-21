@@ -11,6 +11,10 @@ class Users (val userID : String, val firstName : String, val lastName : String,
     }
 }
 
+class Images() {
+
+}
+
 class dataUsers(val Users : List<Map<String, String>>) {
     override fun toString(): String {
         return "User: ${this.Users} \n"

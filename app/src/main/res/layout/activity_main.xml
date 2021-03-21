@@ -27,7 +27,7 @@
                 app:layout_constraintEnd_toEndOf="parent"/>
             <Button
                 android:id="@+id/SearchMovie"
-                android:layout_width="150dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="40dp"
                 android:text="Поиск (тест GET)"
@@ -53,15 +53,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:background="@color/black"/>
-<<<<<<< HEAD
-=======
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:text="Авторизация (тест POST)"
                 android:onClick="buttonAuth_onClick"/>
->>>>>>> main
             <TextView
                 android:id="@+id/testPOST"
                 android:layout_width="match_parent"
@@ -88,18 +85,6 @@
                 android:background="@color/black"/>
             <TextView
                 android:id="@+id/testToken"
-<<<<<<< HEAD
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:gravity="left"/>
-            <TextView
-                android:id="@+id/testToken2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:gravity="left"/>
-=======
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
@@ -119,12 +104,17 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:text="Получение картинки"
-                android:visibility="invisible"/>
+                android:onClick="image_onClick"
+                android:visibility="visible"/>
+            <TextView
+                android:id="@+id/textImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
             <ImageView
+                android:id="@+id/testIMG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="invisible"/>
->>>>>>> main
+                android:visibility="visible"/>
         </LinearLayout>
     </ScrollView>
 
