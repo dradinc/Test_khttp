@@ -30,7 +30,7 @@
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="40dp"
-                android:text="Поиск"
+                android:text="Поиск (тест GET)"
                 app:layout_constraintTop_toBottomOf="@id/idMovie"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -53,6 +53,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:background="@color/black"/>
+<<<<<<< HEAD
+=======
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Авторизация (тест POST)"
+                android:onClick="buttonAuth_onClick"/>
+>>>>>>> main
             <TextView
                 android:id="@+id/testPOST"
                 android:layout_width="match_parent"
@@ -79,6 +88,7 @@
                 android:background="@color/black"/>
             <TextView
                 android:id="@+id/testToken"
+<<<<<<< HEAD
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
@@ -89,6 +99,32 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:gravity="left"/>
+=======
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:gravity="left"/>
+            <TextView
+                android:id="@+id/testToken2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:gravity="left"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/black"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Получение картинки"
+                android:visibility="invisible"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"/>
+>>>>>>> main
         </LinearLayout>
     </ScrollView>
 
