@@ -100,12 +100,13 @@
                 android:layout_height="3dp"
                 android:background="@color/black"/>
             <Button
+                android:id="@+id/imagesBut"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:text="Получение картинки"
                 android:onClick="image_onClick"
-                android:visibility="visible"/>
+                android:visibility="invisible"/>
             <TextView
                 android:id="@+id/textImage"
                 android:layout_width="match_parent"
@@ -113,8 +114,28 @@
             <ImageView
                 android:id="@+id/testIMG"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:visibility="visible"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/black"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Видео"
+                android:onClick="video_onClick"
+                android:visibility="visible"/>
+            <!--<VideoView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"/>-->
+            <WebView
+                android:id="@+id/testWebVideo"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                tools:ignore="WebViewLayout"/>
         </LinearLayout>
     </ScrollView>
 

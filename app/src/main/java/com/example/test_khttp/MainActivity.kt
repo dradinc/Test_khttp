@@ -1,9 +1,14 @@
 package com.example.test_khttp
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.webkit.WebResourceRequest
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.*
 import androidx.annotation.RequiresApi
 import com.google.gson.Gson
@@ -21,6 +26,8 @@ import java.net.URL
 class MainActivity : AppCompatActivity() {
     // Переменные для работы с HTTP запросами
     var token : Int? = null
+    var poster : String? = null
+    var videos : String? = null
     val client = OkHttpClient()
     val gson = Gson()
 
@@ -58,14 +65,21 @@ class MainActivity : AppCompatActivity() {
 
                     val responseBody = response.body?.string()
                     val movieInfo : Movie_Info = gson.fromJson(responseBody, Movie_Info::class.java)
+                    poster = movieInfo.poster
                     runOnUiThread{
                         findViewById<TextView>(R.id.Test2_textView1).text = movieInfo.toString()
+                        findViewById<Button>(R.id.imagesBut).visibility = View.VISIBLE
                     }
                 }
             }
 
         })
+    }
 
+
+    //
+    @Override
+    fun buttonAuth_onClick(view : View) {
         // Тест POST запроса
         val requestBody  = RequestBody.create("application/json; charset=utf-8".toMediaTypeOrNull(), "{\"email\":\"vasya@mail.com\", \"password\":\"qwerty\"}")
         val requestPOST = Request.Builder().url("http://cinema.areas.su/auth/login").post(requestBody).build()
@@ -134,7 +148,7 @@ class MainActivity : AppCompatActivity() {
     fun image_onClick(view : View) {
         // Добавление переменной с запросом
         val request_image = Request.Builder() // Начинаем построение хапроса (Или что-то вроде этого)
-                .url("http://cinema.areas.su/up/images/" + "umbrella.jpeg") // Ссылка на запрос
+                .url("http://cinema.areas.su/up/images/" + poster) // Ссылка на запрос
                 .build() // Построить запрос (или что-то вроде этого)
 
         // Делаем вызов простроенного запроса
@@ -150,14 +164,29 @@ class MainActivity : AppCompatActivity() {
 
             // Если вызов выполнится
             override fun onResponse(call: Call, response: Response) {
-                // Мелочь которая не нужна
-                var result = response.body?.string()
+                val result = response.body?.byteStream()
+                val getImage : Bitmap = BitmapFactory.decodeStream(result)
                 runOnUiThread {
-                    findViewById<TextView>(R.id.textImage).text = result
+                    findViewById<ImageView>(R.id.testIMG).setImageBitmap(getImage)
                 }
             }
         })
+    }
 
-        //findViewById<ImageView>(R.id.testIMG).setImage
+
+
+    // И для финального штриха, работа с видео
+    @Override
+    fun video_onClick(view : View) {
+        var webView = findViewById<WebView>(R.id.testWebVideo)
+        webView!!.webViewClient = object  : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                if (url != null) {
+                    view?.loadUrl(url)
+                }
+                return true
+            }
+        }
+        webView!!.loadUrl("http://cinema.areas.su/up/video/" + videos)
     }
 }
